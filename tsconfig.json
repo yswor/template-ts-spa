@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "es2020",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "lib": ["es6", "dom"],
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@containers/*": ["./containers/*"],
+      "@routes/*": ["./routes/*"],
+      "@components/*": ["./components/*"],
+      "@assets/*": ["./assets/*"],
+      "@images/*": ["./assets/images/*"],
+      "@config/*": ["./config/*"],
+      "*": ["../"]
+    },
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"],
+}
