@@ -39,4 +39,4 @@ jobs:
             git config user.name "Deployment Bot"
             git commit --allow-empty -m "deploy"
             # Push quietly to prevent showing the token in log
-            git push -q https://${GP_GH_TOKEN}@github.com/yswor/yswor.github.io.git master
+            git push -f -q https://${GP_GH_TOKEN}@github.com/yswor/yswor.github.io.git master
