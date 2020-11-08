@@ -14,8 +14,9 @@ git init
 git add -A
 git commit -m 'deploy'
 
-# 部署到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:yswor/yswor.github.io.git master:master
+# 部署
+git push -f https://${GH_TOKEN}@github.com:yswor/yswor.github.io.git master:master
+
 
 cd -
 
