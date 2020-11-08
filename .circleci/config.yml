@@ -4,7 +4,7 @@ jobs:
     machine:
       image: ubuntu-2004:202010-01
 
-    working_directory: ~/template
+    working_directory: ~/template-ts-spa
 
     steps:
       - checkout
@@ -26,19 +26,18 @@ jobs:
 
       - run:
           name: Clone dist
-          working_directory: ~/template/dist
+          working_directory: ~/template-ts-spa/dist
           command: |
             git clone --depth 1 https://${GP_GH_TOKEN}@github.com/yswor/yswor.github.io.git
 
-      -run: ls -a
-
       - deploy:
           name: Trigger deployment
-          working_directory: ~/template/dist
+          working_directory: ~/template-ts-spa/dist
           command: |
             git config credential.helper 'cache --timeout=120'
             git config user.email "heichatutu@gmail.com"
             git config user.name "Deployment Bot"
             git commit --allow-empty -m "deploy"
+            git show
             # Push quietly to prevent showing the token in log
             # git push -f -q https://${GP_GH_TOKEN}@github.com/yswor/yswor.github.io.git master
