@@ -15,7 +15,7 @@ git add -A
 git commit -m 'deploy'
 
 # 部署
-git push -f https://${GH_TOKEN}@github.com:yswor/yswor.github.io.git master:master
+git push -f "https://${GH_TOKEN}@github.com:yswor/yswor.github.io.git" master:master
 
 
 cd -
