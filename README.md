@@ -1,3 +1,3 @@
 # poetry
 
-[![Build Status](https://travis-ci.org/yswor/template-ts-spa.svg?branch=master)](https://travis-ci.org/yswor/template-ts-spa)
+[![Build Status](https://travis-ci.com/yswor/template-ts-spa.svg?branch=master)](https://travis-ci.com/yswor/template-ts-spa)
