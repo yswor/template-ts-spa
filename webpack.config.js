@@ -57,6 +57,16 @@ module.exports = {
       title: 'Poetry',
       template: 'src/config/template/template.html',
       favicon: 'src/config/template/favicon.ico',
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+        minifyJS: true,
+      },
+      inject: false,
     }),
     new CopyPlugin({
       patterns: [{ from: 'src/public' }],
