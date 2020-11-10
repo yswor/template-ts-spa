@@ -1,27 +1,46 @@
-const routes = [
+import Home from '@containers/home'
+import Post from '@containers/post'
+import Demo from '@containers/demo'
+import Countdown from '@containers/demo/countdown'
+import Player from '@containers/demo/player'
+
+export type RouteType = {
+  key: string
+  path: string
+  ComponentName: any
+  exact?: boolean
+  routes?: RouteType[]
+}
+
+const routes: RouteType[] = [
   {
-    name: 'index',
-    path: '/',
-    component: require('@containers/home/index').default,
-    exact: true,
-  },
-  {
-    name: 'home',
-    path: '/home',
-    component: require('@containers/home/index').default,
-    exact: true,
-  },
-  {
-    name: 'post',
+    key: 'post',
     path: '/post',
-    component: require('@containers/post/index').default,
-    exact: true,
+    ComponentName: Post,
   },
   {
-    name: 'demo',
+    key: 'demo',
     path: '/demo',
-    component: require('@containers/demo/index').default,
-    exact: true,
+    ComponentName: Demo,
+    routes: [
+      {
+        key: 'countdown',
+        path: '/demo/countdown',
+        ComponentName: Countdown,
+        exact: true,
+      },
+      {
+        key: 'player',
+        path: '/demo/player',
+        ComponentName: Player,
+        exact: true,
+      },
+    ],
+  },
+  {
+    key: 'home',
+    path: '/',
+    ComponentName: Home,
   },
 ]
 

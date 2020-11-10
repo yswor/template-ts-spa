@@ -1,0 +1,41 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: flex-start;
+
+  .menu {
+    flex: 0 176px;
+    background-color: #669999;
+
+    .menuItem {
+      height: 48px;
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid #fff;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #336666;
+      }
+    }
+  }
+
+  .link {
+    display: inline-block;
+    width: 100%;
+    color: #fff;
+    line-height: 48px;
+    font-size: 1rem;
+
+    text-decoration: none;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

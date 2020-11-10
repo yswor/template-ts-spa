@@ -1,14 +1,13 @@
-import React, { Component } from 'react'
-import CardContent from '@material-ui/core/CardContent'
-import Card from '@material-ui/core/Card'
+import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
-import Player from '@components/player'
+import { Route } from 'react-router-dom'
+import Player from '@containers/demo/player'
 
 const styles = require('./index.scss')
 
-class Home extends Component {
-  render() {
-    return (
+const Home: React.FC = () => {
+  return (
+    <div className={styles.container}>
       <div className={styles.page}>
         <AppBar className={styles.header} position="static">
           <label className={styles.slug}>wait!</label>
@@ -23,19 +22,13 @@ class Home extends Component {
             </a>
           </nav>
           <div className={styles.content}>
-            {new Array(14).fill(1).map((e, i) => (
-              <Card className={styles.card} elevation={3} key={i.toString()}>
-                <CardContent>nothing to say...</CardContent>
-              </Card>
-            ))}
+            <Route path="player" exact component={Player} />
           </div>
-          <aside className={styles.aside}>
-            <Player />
-          </aside>
+          <aside className={styles.aside}></aside>
         </main>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Home

@@ -8,8 +8,15 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          {routes.map((props) => {
-            return <Route {...props} key={props.name} />
+          {routes.map(({ key, ComponentName, path, exact, routes }) => {
+            return (
+              <Route
+                exact={exact}
+                path={path}
+                key={key}
+                render={props => <ComponentName {...props} routes={routes} />}
+              />
+            )
           })}
         </Switch>
       </Router>

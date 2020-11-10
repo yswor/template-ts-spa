@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import audios from '@config/audios'
-import { wait } from '../../help/util'
 import {
   Pause,
   PlayArrow,
@@ -254,8 +253,13 @@ const VolumeController: React.FC<VolumeControllerProps> = ({ audioEleRef }) => {
   /**
    * 手动更改音量
    */
+  const setVolumeMannual = useCallback(() => {}, [])
 
   const toggleVolController = useCallback(() => setControllerStatus(s => !s), [])
+
+  const getVolumeIcon = useCallback(() => {
+    const vStatus = {}
+  }, [])
 
   return (
     <div className={styles.soundBox}>
@@ -264,12 +268,22 @@ const VolumeController: React.FC<VolumeControllerProps> = ({ audioEleRef }) => {
         <div className={styles.content} />
       </div>
       <div onClick={toggleVolController} className={styles.sound}>
-        <VolumeDown fontSize="inherit" />
-        <VolumeMute fontSize="inherit" />
-        <VolumeUp fontSize="inherit" />
+        <VolumeIcon volume={volume} />
       </div>
     </div>
   )
+}
+
+const VolumeIcon: React.FC<{ volume: number }> = ({ volume }) => {
+  if (volume <= 0.3) {
+    return <VolumeMute fontSize="inherit" />
+  }
+
+  if (volume <= 0.6) {
+    return <VolumeDown fontSize="inherit" />
+  }
+
+  return <VolumeUp fontSize="inherit" />
 }
 
 /**

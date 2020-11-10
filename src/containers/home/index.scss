@@ -1,4 +1,5 @@
-$maxHeight: calc(100vh - 50px);
+$headerHeight: 64px;
+$maxHeight: calc(100vh - 64px);
 
 .flex-center {
   display: flex;
@@ -6,17 +7,25 @@ $maxHeight: calc(100vh - 50px);
   align-items: center;
 }
 
-.page {
+.container {
   box-sizing: border-box;
   width: 100vw;
+  height: 100vh;
+
   background: url('https://titor-robot.oss-cn-shanghai.aliyuncs.com/poetry/home/home_bg.png?x-oss-process=style/thumbnail_style')
     center;
+}
+
+.page {
+  box-sizing: border-box;
+  margin: 0 auto;
+  background-color: #fff;
 }
 
 .header {
   background-color: #7166ba;
   width: 100%;
-  height: 50px;
+  height: $headerHeight;
 
   @extend .flex-center;
   align-items: flex-start;
@@ -36,7 +45,7 @@ $maxHeight: calc(100vh - 50px);
 }
 
 .menu {
-  width: 10%;
+  width: 176px;
   height: $maxHeight;
   background-color: #393f51;
 
@@ -53,6 +62,7 @@ $maxHeight: calc(100vh - 50px);
 
   color: #ffffff60;
   line-height: 40px;
+  text-decoration: none;
 
   &:hover {
     background-color: #00000040;
@@ -61,7 +71,7 @@ $maxHeight: calc(100vh - 50px);
 }
 
 .content {
-  width: 60%;
+  width: calc(100% - 128px);
   height: $maxHeight;
   overflow-y: scroll;
 }
@@ -101,9 +111,9 @@ $maxHeight: calc(100vh - 50px);
   }
 }
 
-@media (max-width: 900px) and (min-width: 100px) {
+@media (max-width: 960px) and (min-width: 100px) {
   .page {
-    padding: 0;
+    width: 750px;
   }
 
   .aside,
@@ -116,8 +126,8 @@ $maxHeight: calc(100vh - 50px);
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 960px) {
   .page {
-    padding: 0 15vw;
+    width: 960px;
   }
 }
