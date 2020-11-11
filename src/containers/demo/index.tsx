@@ -1,6 +1,6 @@
 import { RouteType } from '@routes/index'
 import React from 'react'
-import { Link, Route, useRouteMatch } from 'react-router-dom'
+import { Link, Route, Switch, useRouteMatch } from 'react-router-dom'
 
 const styles = require('./index.scss')
 
@@ -27,9 +27,11 @@ const Demo: React.FC<{ routes: RouteType[] }> = ({ routes }) => {
         </li>
       </ul>
       <main>
-        {routes.map(({ path, ComponentName, key, exact }) => {
-          return <Route path={path} key={key} component={ComponentName} exact={exact} />
-        })}
+        <Switch>
+          {routes.map(({ path, component, key, exact }) => {
+            return <Route path={path} key={key} component={component} exact={exact} />
+          })}
+        </Switch>
       </main>
     </div>
   )

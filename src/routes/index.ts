@@ -3,44 +3,52 @@ import Post from '@containers/post'
 import Demo from '@containers/demo'
 import Countdown from '@containers/demo/countdown'
 import Player from '@containers/demo/player'
+import PageNotFound from '@containers/404'
 
 export type RouteType = {
   key: string
   path: string
-  ComponentName: any
+  component: any
   exact?: boolean
   routes?: RouteType[]
 }
 
 const routes: RouteType[] = [
   {
+    key: 'home',
+    path: '/',
+    component: Home,
+    exact: true,
+  },
+  {
     key: 'post',
     path: '/post',
-    ComponentName: Post,
+    component: Post,
+    exact: true,
   },
   {
     key: 'demo',
     path: '/demo',
-    ComponentName: Demo,
+    component: Demo,
     routes: [
       {
         key: 'countdown',
         path: '/demo/countdown',
-        ComponentName: Countdown,
+        component: Countdown,
         exact: true,
       },
       {
         key: 'player',
         path: '/demo/player',
-        ComponentName: Player,
+        component: Player,
         exact: true,
       },
     ],
   },
   {
-    key: 'home',
-    path: '/',
-    ComponentName: Home,
+    key: '404',
+    path: '*',
+    component: PageNotFound,
   },
 ]
 

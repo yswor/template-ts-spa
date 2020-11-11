@@ -1,11 +1,10 @@
 import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
-import { Route } from 'react-router-dom'
-import Player from '@containers/demo/player'
+import { RouteType } from '@routes/index'
 
 const styles = require('./index.scss')
 
-const Home: React.FC = () => {
+const Home: React.FC<{ routes: RouteType[] }> = ({ routes }) => {
   return (
     <div className={styles.container}>
       <div className={styles.page}>
@@ -15,15 +14,13 @@ const Home: React.FC = () => {
         <main className={styles.main}>
           <nav className={styles.menu}>
             <a href="/post" className={styles.menuItem}>
-              Poetry
+              Post
             </a>
             <a href="/demo" className={styles.menuItem}>
               Demo
             </a>
           </nav>
-          <div className={styles.content}>
-            <Route path="player" exact component={Player} />
-          </div>
+          <div className={styles.content}></div>
           <aside className={styles.aside}></aside>
         </main>
       </div>

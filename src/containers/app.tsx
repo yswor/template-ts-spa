@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom'
 import routes from '@routes/index'
 import './app.scss'
 
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          {routes.map(({ key, ComponentName, path, exact, routes }) => {
+          {routes.map(({ key, component: ComponentName, path, exact, routes = [] }) => {
             return (
               <Route
                 exact={exact}
