@@ -64,7 +64,9 @@ module.exports = {
         removeScriptTypeAttributes: true,
         removeStyleLinkTypeAttributes: true,
         useShortDoctype: true,
-        minifyJS: true,
+        minifyJS: {
+          compress: { sequences: false },
+        },
       },
       inject: false,
     }),
