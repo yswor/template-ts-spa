@@ -66,13 +66,13 @@ module.exports = {
         useShortDoctype: true,
         minifyJS: true,
       },
-      inject: false,
     }),
     new CopyPlugin({
       patterns: [{ from: 'src/public' }],
     }),
   ],
   resolve: {
+    modules: [path.resolve(__dirname, 'node_modules')],
     alias: {
       '@containers': path.resolve(__dirname, 'src/containers'),
       '@routes': path.resolve(__dirname, 'src/routes'),
@@ -82,7 +82,7 @@ module.exports = {
       '@images': path.resolve(__dirname, 'src/assets/images'),
       '*': path.resolve(__dirname, ''),
     },
-    extensions: ['.ts', '.js', '.json', '.tsx'],
+    extensions: ['.tsx', 'scss', '.ts', '.json', '.js'],
   },
   devtool: isProd ? false : 'cheap-module-source-map',
   devServer: {

@@ -4,7 +4,7 @@ import { RouteType } from '@routes/index'
 
 const styles = require('./index.scss')
 
-const Home: React.FC<{ routes: RouteType[] }> = ({ routes }) => {
+const Home: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.page}>
