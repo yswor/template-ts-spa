@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+
+const styles = require('./index.scss')
 
 const Countdown: React.FC = () => {
-  return <p style={{ fontSize: '2rem' }}>hhhhhhhhhhhhhhhhhh</p>
+  return (
+    <div className={styles.circle}>
+      <div className={styles.circleLeft}>
+        <span className={styles.circleLeftCover}></span>
+      </div>
+      <div className={styles.circleRight}>
+        <span className={styles.circleRightCover}></span>
+      </div>
+    </div>
+  )
 }
 
 export default Countdown
