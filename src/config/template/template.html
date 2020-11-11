@@ -10,12 +10,9 @@
   <script src="/poetry.bundle.js"></script>
   <script>
     (function() {
-      console.log('=======start in it======')
       var redirectUrl = sessionStorage.redirect
       sessionStorage.removeItem('redirect')
-      console.log('=======out======', redirectUrl)
       if (redirectUrl && redirectUrl != location.href) {
-        console.log('=======redirct======')
         history.replaceState(null, null, redirectUrl)
       } 
     })()
