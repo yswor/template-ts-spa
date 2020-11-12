@@ -3,7 +3,7 @@ import Posts from '@containers/posts'
 import Post from '@containers/posts/post'
 import Demo from '@containers/demo'
 import Countdown from '@containers/demo/countdown'
-import Player from '@containers/demo/player'
+import Player from '@components/player'
 import PageNotFound from '@containers/404'
 
 export type RouteType = {

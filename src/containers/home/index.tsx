@@ -1,3 +1,4 @@
+import Player from '@components/player'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -15,7 +16,9 @@ const Home: React.FC = () => {
             Post
           </Link>
         </nav>
-        <div className={styles.content}></div>
+        <div className={styles.content}>
+          <Player />
+        </div>
       </main>
     </div>
   )
