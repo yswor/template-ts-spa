@@ -1,0 +1,15 @@
+@mixin main {
+  margin: 0 auto;
+  height: 100%;
+  width: 960px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

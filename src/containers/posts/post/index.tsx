@@ -4,8 +4,8 @@ const styles = require('./index.scss')
 
 const Post: React.FC = () => {
   return (
-    <div>
-      <h1>我用什么才能留住你？</h1>
+    <div className={styles.container}>
+      <h1 className={styles.h1}>我用什么才能留住你？</h1>
       <p className={styles.p}>我给你瘦落的街道、绝望的落日、荒郊的月亮。</p>
       <p className={styles.p}>我给你一个久久地望着孤月的人的悲哀。</p>
       <p className={styles.p}>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const PageNotFound: React.FC = () => {
   return (
-    <div className="container">
+    <div className="page">
       <h1>Page Not Found</h1>
       <Link to="/" replace>
         back home

@@ -1,5 +1,6 @@
 import Home from '@containers/home'
-import Post from '@containers/post'
+import Posts from '@containers/posts'
+import Post from '@containers/posts/post'
 import Demo from '@containers/demo'
 import Countdown from '@containers/demo/countdown'
 import Player from '@containers/demo/player'
@@ -23,8 +24,15 @@ const routes: RouteType[] = [
   {
     key: 'post',
     path: '/post',
-    component: Post,
-    exact: true,
+    component: Posts,
+    routes: [
+      {
+        key: 'post_detail',
+        path: '/post/:id',
+        component: Post,
+        exact: true,
+      },
+    ],
   },
   {
     key: 'demo',

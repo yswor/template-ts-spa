@@ -1,0 +1,53 @@
+@import '../../help/uitl.scss';
+
+$navHeight: 56px;
+
+.container {
+  @include main();
+
+  flex-direction: column;
+}
+
+.nav {
+  background: #3366cc;
+  height: $navHeight;
+  width: 100%;
+
+  .navBtn {
+    display: block;
+    line-height: $navHeight;
+    font-size: 1.2rem;
+    color: #fff;
+    width: 128px;
+    transition: 0.5s;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+  }
+}
+
+.main {
+  @include flexCenter();
+  width: 960px;
+  height: 100%;
+
+  .menu {
+    flex: 0 176px;
+    height: 100%;
+    background: #669999;
+
+    .menuItem {
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      text-align: center;
+      width: 100%;
+      line-height: 48px;
+    }
+  }
+
+  .content {
+    flex: 1;
+    height: 100%;
+  }
+}

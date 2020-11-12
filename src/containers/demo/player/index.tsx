@@ -237,25 +237,22 @@ interface VolumeControllerProps {
 
 const VolumeController: React.FC<VolumeControllerProps> = ({ audioEleRef }) => {
   const [showController, setControllerStatus] = useState(false)
-  const [volume, setVolume] = useState(0)
-
-  /**
-   * 设置音量初始值
-   */
-  useEffect(() => {
-    const audioRef = audioEleRef.current
-    if (!audioRef) return
-
-    const value = audioRef.volume
-    setVolume(value)
-  }, [audioEleRef])
+  const [volume, setVolume] = useState(1)
 
   /**
    * 手动更改音量
    */
-  const setVolumeMannual = useCallback(() => {}, [])
+  const setVolumeMannual = useCallback(() => {
+    const audioRef = audioEleRef.current
+    if (!audioRef) return
+    audioRef.volume = volume
+  }, [audioEleRef, volume])
 
-  const toggleVolController = useCallback(() => setControllerStatus(s => !s), [])
+  useEffect(() => {
+    setVolumeMannual()
+  }, [setVolumeMannual])
+
+  const toggleVolume = useCallback(() => setVolume(i => (i ? 0 : 1)), [])
 
   const getVolumeIcon = useCallback(() => {
     const vStatus = {}
@@ -263,11 +260,12 @@ const VolumeController: React.FC<VolumeControllerProps> = ({ audioEleRef }) => {
 
   return (
     <div className={styles.soundBox}>
-      <div className={styles.soundProgress} hidden={!showController}>
-        <div className={styles.point} />
-        <div className={styles.content} />
+      <div className={styles.soundProgress}>
+        <div className={styles.content} style={{ width: `${volume * 100}%` }}>
+          <div className={styles.point} />
+        </div>
       </div>
-      <div onClick={toggleVolController} className={styles.sound}>
+      <div onClick={toggleVolume} className={styles.sound}>
         <VolumeIcon volume={volume} />
       </div>
     </div>

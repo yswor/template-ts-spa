@@ -6,8 +6,9 @@
   justify-content: flex-start;
 
   .menu {
-    flex: 0 176px;
-    background-color: #669999;
+    width: 176px;
+    height: 100%;
+    background-color: #008f94;
 
     .menuItem {
       height: 48px;
@@ -32,8 +33,9 @@
     text-decoration: none;
   }
 
-  main {
+  .content {
     flex: 1;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

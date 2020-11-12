@@ -3,7 +3,13 @@
   padding: 0;
 }
 
-:global(.container) {
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+:global(.page) {
   width: 100vw;
   height: 100vh;
 
@@ -11,4 +17,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+:global(.main) {
+  margin: 0 auto;
+  height: 100%;
+  width: 960px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
