@@ -9,6 +9,7 @@ import {
   VolumeMute,
   VolumeUp,
 } from '@material-ui/icons'
+import ViewDragable from '@components/viewDragable'
 
 const styles = require('./index.scss')
 
@@ -177,6 +178,9 @@ interface ProgressProps {
   onProgressChange?: (current: number) => void
 }
 
+/**
+ * 播放进度
+ */
 const Progress: React.FC<ProgressProps> = ({ current, total, onProgressChange }) => {
   const calcWidth = useCallback(() => {
     return (current / total) * 100 + '%'
@@ -200,6 +204,9 @@ interface SongControllerProps {
   playing: boolean
 }
 
+/**
+ * 歌曲控制
+ */
 const SongController: React.FC<SongControllerProps> = ({ clickAction, playing }) => {
   const click = useCallback(
     e => {
@@ -235,34 +242,44 @@ interface VolumeControllerProps {
   audioEleRef: React.MutableRefObject<HTMLAudioElement | null>
 }
 
+const VOLUME_PROGRESS_WIDTH = 80
+
+/**
+ * 音量控制
+ */
 const VolumeController: React.FC<VolumeControllerProps> = ({ audioEleRef }) => {
-  const [showController, setControllerStatus] = useState(false)
   const [volume, setVolume] = useState(1)
 
   /**
-   * 手动更改音量
+   * 更改音量
    */
-  const setVolumeMannual = useCallback(() => {
+  useEffect(() => {
     const audioRef = audioEleRef.current
     if (!audioRef) return
     audioRef.volume = volume
   }, [audioEleRef, volume])
 
-  useEffect(() => {
-    setVolumeMannual()
-  }, [setVolumeMannual])
+  const onMove = useCallback(({ x }) => {
+    const volumeChange = (v: number) => {
+      const value = v + x / VOLUME_PROGRESS_WIDTH
+      if (value <= 0) {
+        return 0
+      }
+      if (value >= 1) {
+        return 1
+      }
+      return value
+    }
+    setVolume(volumeChange)
+  }, [])
 
   const toggleVolume = useCallback(() => setVolume(i => (i ? 0 : 1)), [])
-
-  const getVolumeIcon = useCallback(() => {
-    const vStatus = {}
-  }, [])
 
   return (
     <div className={styles.soundBox}>
       <div className={styles.soundProgress}>
         <div className={styles.content} style={{ width: `${volume * 100}%` }}>
-          <div className={styles.point} />
+          <ViewDragable style={styles.point} onMove={onMove} />
         </div>
       </div>
       <div onClick={toggleVolume} className={styles.sound}>
@@ -274,11 +291,11 @@ const VolumeController: React.FC<VolumeControllerProps> = ({ audioEleRef }) => {
 
 const VolumeIcon: React.FC<{ volume: number }> = ({ volume }) => {
   if (volume <= 0.3) {
-    return <VolumeMute fontSize="inherit" />
+    return <VolumeMute fontSize="inherit" className={styles.volumeMuteIcon} />
   }
 
   if (volume <= 0.6) {
-    return <VolumeDown fontSize="inherit" />
+    return <VolumeDown fontSize="inherit" className={styles.volumeDownIcon} />
   }
 
   return <VolumeUp fontSize="inherit" />

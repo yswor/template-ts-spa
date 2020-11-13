@@ -29,7 +29,7 @@ $progressWidth: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 100%;
+  width: $progressWidth;
 }
 
 .progressNumber {
@@ -38,6 +38,7 @@ $progressWidth: 100%;
   justify-content: space-between;
 
   p {
+    font-size: 0.8rem;
     color: #232323;
   }
 }
@@ -57,6 +58,7 @@ $progressWidth: 100%;
 }
 
 .controller {
+  margin-top: 10px;
   width: $progressWidth;
   display: flex;
   justify-content: space-between;
@@ -64,6 +66,8 @@ $progressWidth: 100%;
 }
 
 .sc {
+  position: relative;
+  left: -4px;
   margin-top: 3px;
   @extend .flex-center;
   justify-content: flex-start;
@@ -95,6 +99,16 @@ $progressWidth: 100%;
   @extend .flex-center;
   z-index: 1;
   position: relative;
+}
+
+.volumeMuteIcon {
+  position: relative;
+  left: -4px;
+}
+
+.volumeDownIcon {
+  position: relative;
+  left: -2px;
 }
 
 .soundProgress {
